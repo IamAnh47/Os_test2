@@ -4,11 +4,13 @@
 
 #include "common.h"
 
-#define MAX_QUEUE_SIZE 10
+#define MAX_QUEUE_SIZE 140
 
 struct queue_t {
+	pthread_mutex_t queue_lock;
 	struct pcb_t * proc[MAX_QUEUE_SIZE];
 	int size;
+	int slot;
 };
 
 void enqueue(struct queue_t * q, struct pcb_t * proc);
